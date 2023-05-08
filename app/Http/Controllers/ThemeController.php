@@ -34,4 +34,14 @@ $titre="Liste des themes" ;
         // $t->save();
 
     }
+    public function show($id)
+    {
+
+       $theme= Theme::find($id);
+       $titre= "consultation du theme ".$theme->theme;
+    //    dd($theme->niveau);
+    return view("themes.show",compact('theme','titre'));
+
+
+    }
 }

@@ -19,7 +19,7 @@
                     <th scope="row">{{$t->id}}</th>
                     <td>{{$t->theme}}</td>
                     <td>{{$t->niveau}}</td>
-                    <td>@mdo</td>
+                    <td><a href="{{ url('themes/'.$t->id ) }}">Consulter</a></td>
                 </tr>
             @endforeach
 
