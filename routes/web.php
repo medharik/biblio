@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ThemeController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -16,9 +17,9 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
-Route::get('/accueil', function () {
-    return view('accueil');
-});
-Route::get('/layout', function () {
+Route::get('/test', function () {
     return view('layout');
 });
+Route::get('themes/create', [ThemeController::class,'create'])->name('themes.create');
+Route::get('themes/', [ThemeController::class,'index'])->name('youssef');
+Route::post('themes/store', [ThemeController::class,'store'])->name('kiki');
