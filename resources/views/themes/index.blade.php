@@ -19,7 +19,15 @@
                     <th scope="row">{{$t->id}}</th>
                     <td>{{$t->theme}}</td>
                     <td>{{$t->niveau}}</td>
-                    <td><a href="{{ url('themes/'.$t->id ) }}">Consulter</a></td>
+                    <td>
+                        <a href="{{ url('themes/'.$t->id ) }}" class="btn btn-sm btn-info">Consulter</a>
+                        <form action="{{url('themes/'.$t->id)}}" method="post" class="d-inline">
+                            @csrf
+                            @method('DELETE')
+                            <button onclick="return confirm('Supprimer?')" class="btn btn-sm btn-danger">Supprimer</button>
+                        </form>
+
+                    </td>
                 </tr>
             @endforeach
 
@@ -29,3 +37,18 @@
     @foreach ($themes as $t)
     @endforeach
 @endsection
+<script>
+    function alerti() {
+        swal({
+    title: "Are you sure?",
+    text: "You will not be able to recover this imaginary file!",
+    type: "warning",
+    showCancelButton: true,
+    confirmButtonColor: '#DD6B55',
+    confirmButtonText: 'Yes, I am sure!',
+    cancelButtonText: "No, cancel it!"
+ }).then(
+
+       function () { return false; });
+    }
+</script>

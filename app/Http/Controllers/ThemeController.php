@@ -44,4 +44,10 @@ $titre="Liste des themes" ;
 
 
     }
+   public function destroy($id)
+   {
+    $theme=Theme::find($id);
+    $theme->delete();
+return redirect()->route('youssef');
+   }
 }

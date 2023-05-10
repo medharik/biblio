@@ -24,3 +24,5 @@ Route::get('themes/create', [ThemeController::class,'create'])->name('themes.cre
 Route::get('themes/', [ThemeController::class,'index'])->name('youssef');
 Route::post('themes/store', [ThemeController::class,'store'])->name('kiki');
 Route::get('themes/{id}', [ThemeController::class,'show'])->name('themes.show');
+// Route::get('themes/del/{id}', [ThemeController::class,'destroy'])->name('themes.deletes');
+Route::delete('themes/{id}', [ThemeController::class,'destroy'])->name('themes.delete');
