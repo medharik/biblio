@@ -50,4 +50,22 @@ $titre="Liste des themes" ;
     $theme->delete();
 return redirect()->route('youssef');
    }
+   //affiche une page ayant le form d'edition
+   // web.php : routeget =>
+   public function edit($id)
+   {
+    // dd("je suis dans edit".);
+
+    $theme=Theme::find($id);
+    return view("themes.edit",compact('theme'));
+   }
+   //web : route post :themes/upd/id
+   public function update(Request $request,$id)
+   {
+    $theme=Theme::find($id);
+    $theme->update($request->all());
+    return redirect()->route('youssef');
+
+   }
+
 }

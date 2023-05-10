@@ -26,3 +26,5 @@ Route::post('themes/store', [ThemeController::class,'store'])->name('kiki');
 Route::get('themes/{id}', [ThemeController::class,'show'])->name('themes.show');
 // Route::get('themes/del/{id}', [ThemeController::class,'destroy'])->name('themes.deletes');
 Route::delete('themes/{id}', [ThemeController::class,'destroy'])->name('themes.delete');
+Route::get('themes/{id}/edit', [ThemeController::class,'edit'])->name('themes.edit');
+Route::put('themes/{id}', [ThemeController::class,'update'])->name('themes.update');

@@ -26,6 +26,8 @@
                             @method('DELETE')
                             <button onclick="return confirm('Supprimer?')" class="btn btn-sm btn-danger">Supprimer</button>
                         </form>
+                        <a href="{{ route('themes.edit',[$t->id]) }}" class="btn btn-sm btn-warning">Editer</a>
+
 
                     </td>
                 </tr>
