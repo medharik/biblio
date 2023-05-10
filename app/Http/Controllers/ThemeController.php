@@ -29,7 +29,7 @@ $titre="Liste des themes" ;
         // $t=new Theme(["theme"=> "$request->theme","niveau"=>$request->niveau]);
         //$t=new Theme()
         //        $t->theme = $request->theme;
-
+// ..
         // $t->niveau = $request->niveau;
         // $t->save();
 
