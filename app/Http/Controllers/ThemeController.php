@@ -15,7 +15,7 @@ $titre="Liste des themes" ;
    return view('themes/index',compact('themes','titre'));
 }
 
-
+// validation des donnees
     public function create()
     {
         return view('themes/create');
@@ -23,6 +23,10 @@ $titre="Liste des themes" ;
 
     public function store(Request $request)
     {
+        $request->validate([
+            'theme' => 'required|max:30',
+            'niveau' => 'required|unique:themes|max:255',
+        ]);
 
         Theme::create($request->all());
       return   redirect()->route('youssef');

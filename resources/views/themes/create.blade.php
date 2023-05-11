@@ -3,8 +3,18 @@
     Nouveau Theme
 @endsection
 @section('main')
-<div class="col-md-6 mx-auto shadow p-3 ">
 
+
+<div class="col-md-6 mx-auto shadow p-3 ">
+    @if ($errors->any())
+    <div class="alert alert-danger">
+        <ul>
+            @foreach ($errors->all() as $error)
+                <li>{{ $error }}</li>
+            @endforeach
+        </ul>
+    </div>
+@endif
     <form method="post" action="{{ route('kiki') }}" >
         @csrf
         <div class="mb-3">
