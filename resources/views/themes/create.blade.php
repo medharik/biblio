@@ -19,11 +19,17 @@
         @csrf
         <div class="mb-3">
             <label for="theme" class="form-label">Theme : </label>
-            <input type="text" name="theme" class="form-control" id="theme" aria-describedby="emailHelp">
+            <input value="{{old('theme')}}" type="text" name="theme" class="form-control  @error('theme')
+            is-invalid   @enderror" id="theme" aria-describedby="emailHelp">
     </div>
     <div class="mb-3">
         <label for="niveau" class="form-label">Niveau</label>
-      <input type="text" name="niveau" class="form-control" id="niveau">
+      <input type="text"   value="{{old('niveau')}}" name="niveau" class="form-control @error('niveau')
+is-invalid
+      @enderror" id="niveau">
+      @error('niveau')
+    <div class="alert alert-danger">{{ $message }}</div>
+    @enderror
     </div>
 
     <button type="submit" class="btn btn-primary">Submit</button>

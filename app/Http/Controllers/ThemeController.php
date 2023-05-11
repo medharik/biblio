@@ -24,8 +24,8 @@ $titre="Liste des themes" ;
     public function store(Request $request)
     {
         $request->validate([
-            'theme' => 'required|max:30',
-            'niveau' => 'required|unique:themes|max:255',
+            'theme' => 'required|max:30|unique:themes',
+            'niveau' => 'required|max:10',
         ]);
 
         Theme::create($request->all());
