@@ -18,9 +18,7 @@ class CreateDocumentsTable extends Migration
             $table->string('titre');
             $table->text('description')->nullable();
             $table->string('chemin');
-
             $table->foreignId('theme_id')->constrained();
-
             $table->timestamps();
         });
     }

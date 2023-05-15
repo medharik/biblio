@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\DocumentController;
 use App\Http\Controllers\ThemeController;
 use Illuminate\Support\Facades\Route;
 
@@ -29,3 +30,7 @@ Route::get('themes/{id}', [ThemeController::class,'show'])->name('themes.show');
 Route::delete('themes/{id}', [ThemeController::class,'destroy'])->name('themes.delete');
 Route::get('themes/{id}/edit', [ThemeController::class,'edit'])->name('themes.edit');
 Route::put('themes/{id}', [ThemeController::class,'update'])->name('themes.update');
+Route::get('documents/create', [DocumentController::class,'create'])->name('documents.create');
+Route::get('documents',[ DocumentController::class,'index'])->name('documents.index');
+Route::get('documents/{id}',[ DocumentController::class,'show'])->name('documents.show');
+Route::post('documents', [DocumentController::class,'store'])->name('documents.store');

@@ -5,6 +5,8 @@
 /vendor
 *.wmv
 *.mp4
+*.png
+*.pdf
 .env.backup
 .phpunit.result.cache
 docker-compose.override.yml

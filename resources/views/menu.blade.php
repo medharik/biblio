@@ -17,15 +17,22 @@
               Themes
             </a>
             <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-              <li><a class="dropdown-item" href="{{ url('themes/create') }}">Nuuveau</a></li>
+              <li><a class="dropdown-item" href="{{ url('themes/create') }}">Nouveau</a></li>
               <li><a class="dropdown-item" href="{{ url('themes') }}">Liste des themes </a></li>
-              <li><hr class="dropdown-divider"></li>
-              <li><a class="dropdown-item" href="#">Something else here</a></li>
-            </ul>
+             </ul>
           </li>
-          <li class="nav-item">
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              Documents
+            </a>
+            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <li><a class="dropdown-item" href="{{ url('documents/create') }}">Nouveau</a></li>
+              <li><a class="dropdown-item" href="{{ url('documents') }}">Liste des Documents </a></li>
+             </ul>
+          </li>
+          {{-- <li class="nav-item">
             <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
-          </li>
+          </li> --}}
         </ul>
         <form class="d-flex">
           <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">

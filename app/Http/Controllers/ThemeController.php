@@ -23,6 +23,7 @@ $titre="Liste des themes" ;
 
     public function store(Request $request)
     {
+        
         $request->validate([
             'theme' => 'required|max:30|unique:themes',
             'niveau' => 'required|max:10',
