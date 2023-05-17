@@ -19,6 +19,8 @@ class Document extends Model
  */
 public function theme(): BelongsTo
 {
-    return $this->belongsTo(Theme::class, 'theme_id');
+    return $this->belongsTo(Theme::class);
 }
 }
+// $d=Document::find(1);
+// $d->theme->photo;

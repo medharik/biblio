@@ -11,6 +11,7 @@
                 <th scope="col">theme</th>
                 <td>Documents par theme </td>
                 <th scope="col">niveau</th>
+                <th scope="col">photo</th>
                 <th scope="col">Action</th>
             </tr>
         </thead>
@@ -25,6 +26,7 @@
                         <li>{{$d->titre}}</li>
                         @endforeach
                     </td>
+                    <td><img src="{{asset('storage/'.$t->photo)}}" width="150" class="img-thumb" alt=""></td>
                     <td>{{$t->niveau}}</td>
                     <td>
                         <a href="{{ url('themes/'.$t->id ) }}" class="btn btn-sm btn-info">Consulter</a>

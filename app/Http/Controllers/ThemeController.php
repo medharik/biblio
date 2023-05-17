@@ -20,16 +20,17 @@ $titre="Liste des themes" ;
     {
         return view('themes/create');
     }
-
     public function store(Request $request)
     {
-        
         $request->validate([
             'theme' => 'required|max:30|unique:themes',
             'niveau' => 'required|max:10',
+            'photo'=>'image'
         ]);
-
-        Theme::create($request->all());
+$data=$request->all();
+$data['photo']=$request->photo->store('images');
+// dd($data['photo']);
+    Theme::create($data);
       return   redirect()->route('youssef');
         // $t=new Theme(["theme"=> "$request->theme","niveau"=>$request->niveau]);
         //$t=new Theme()

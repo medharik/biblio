@@ -17,6 +17,7 @@ class CreateThemesTable extends Migration
             $table->id();
             $table->string('theme')->unique();
             $table->string('niveau')->nullable();
+            $table->string('photo')->nullable();
             $table->timestamps();
         });
     }
