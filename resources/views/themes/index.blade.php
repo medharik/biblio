@@ -9,6 +9,7 @@
             <tr>
                 <th scope="col">#</th>
                 <th scope="col">theme</th>
+                <td>Documents par theme </td>
                 <th scope="col">niveau</th>
                 <th scope="col">Action</th>
             </tr>
@@ -17,7 +18,13 @@
             @foreach ($themes as $t)
                 <tr>
                     <th scope="row">{{$t->id}}</th>
-                    <td>{{$t->theme}}</td>
+                    <td>{{$t->theme}} </td>
+                    <td>
+                        il y a {{$t->documents->count()}} cours
+                        @foreach ($t->documents as $d)
+                        <li>{{$d->titre}}</li>
+                        @endforeach
+                    </td>
                     <td>{{$t->niveau}}</td>
                     <td>
                         <a href="{{ url('themes/'.$t->id ) }}" class="btn btn-sm btn-info">Consulter</a>

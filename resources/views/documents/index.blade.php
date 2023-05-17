@@ -8,25 +8,30 @@
 
             <tr>
                 <th scope="col">#</th>
-                <th scope="col">theme</th>
-                <th scope="col">niveau</th>
+                <th scope="col">Titre</th>
+                <th scope="col">Description</th>
+                <th scope="col">Fichier</th>
+                <th scope="col">Theme_id</th>
                 <th scope="col">Action</th>
             </tr>
         </thead>
         <tbody>
-            @foreach ($themes as $t)
+            @foreach ($documents as $t)
                 <tr>
                     <th scope="row">{{$t->id}}</th>
-                    <td>{{$t->theme}}</td>
-                    <td>{{$t->niveau}}</td>
+                    <td>{{$t->titre}}</td>
+                    <td>{{substr($t->description,0,10)}}...</td>
+                    <td><a download href="{{ asset('storage/'.$t->chemin)}}" class="btn btn-success">TELECHARGER</a>
+                        <a target="_blank" href="{{ asset('storage/'.$t->chemin)}}" class="btn btn-info">Consulter</a></td>
+                    <td>{{$t->theme->theme}} pour le niveau  {{$t->theme->niveau}}</td>
                     <td>
-                        <a href="{{ url('themes/'.$t->id ) }}" class="btn btn-sm btn-info">Consulter</a>
-                        <form action="{{url('themes/'.$t->id)}}" method="post" class="d-inline">
+                        <a href="{{ url('documents/'.$t->id ) }}" class="btn btn-sm btn-info">Consulter</a>
+                        <form action="{{url('documents/'.$t->id)}}" method="post" class="d-inline">
                             @csrf
                             @method('DELETE')
                             <button onclick="return confirm('Supprimer?')" class="btn btn-sm btn-danger">Supprimer</button>
                         </form>
-                        <a href="{{ route('themes.edit',[$t->id]) }}" class="btn btn-sm btn-warning">Editer</a>
+                        <a href="{{ route('documents.edit',[$t->id]) }}" class="btn btn-sm btn-warning">Editer</a>
 
 
                     </td>
@@ -36,7 +41,7 @@
 
         </tbody>
     </table>
-    @foreach ($themes as $t)
+    @foreach ($documents as $t)
     @endforeach
 @endsection
 <script>

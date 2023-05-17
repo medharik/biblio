@@ -34,3 +34,6 @@ Route::get('documents/create', [DocumentController::class,'create'])->name('docu
 Route::get('documents',[ DocumentController::class,'index'])->name('documents.index');
 Route::get('documents/{id}',[ DocumentController::class,'show'])->name('documents.show');
 Route::post('documents', [DocumentController::class,'store'])->name('documents.store');
+Route::get('documents/{id}/edit', [DocumentController::class,'edit'])->name('documents.edit');
+
+Route::delete('documents/{id}', [DocumentController::class,'destroy'])->name('documents.delete');
