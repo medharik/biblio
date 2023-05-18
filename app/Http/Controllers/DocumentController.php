@@ -68,7 +68,8 @@ class DocumentController extends Controller
         // dd("je suis dans edit".);
 
         $document = Document::find($id);
-        return view("documents.edit", compact('document'));
+        $themes = Theme::all();
+        return view("documents.edit", compact('document','themes'));
     }
     //web : route post :documents/upd/id
     public function update(Request $request, $id)

@@ -1,0 +1,2 @@
+theme a plusieurs documents : theme hasMany Documents
+un document apprtient a un seul theme : document belongs to one theme 

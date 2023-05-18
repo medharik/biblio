@@ -68,8 +68,28 @@ return redirect()->route('youssef');
    //web : route post :themes/upd/id
    public function update(Request $request,$id)
    {
+    $request->validate([
+        'theme' => 'required|max:30|unique:themes,theme,'.$id,
+        'niveau' => 'required|max:10',
+        'photo'=>'mimes:jpg,bmp,png,jpeg|size:2048'
+    ]);
     $theme=Theme::find($id);
-    $theme->update($request->all());
+   //$r= Theme::where('theme','=',$request->theme);
+//    isset <=> !null
+//empty <=> 0 ,[],null
+    $data=$request->all();
+
+
+    if($request->has('photo')){
+        // $chemin=public_path('storage/'.$theme->photo);
+        // $url=asset('storage/'.$theme->photo);
+        // dd($chemin,$url)
+;        unlink(public_path('storage/'.$theme->photo));
+        $data['photo']=$request->photo->store("images");
+    }else{
+        unset($data['photo']);
+    }
+    $theme->update($data);
     return redirect()->route('youssef');
 
    }

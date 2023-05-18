@@ -1,23 +1,53 @@
 @extends('base')
-@section("titre")
-    Edition du Theme
+@section('titre')
+    Edition du Document
 @endsection
 @section('main')
-<div class="col-md-6 mx-auto shadow p-3 ">
 
-    <form method="post" action="{{ route('themes.update',["id"=>$theme->id]) }}" >
-        @csrf
-        @method('PUT')
-        <div class="mb-3">
-            <label for="theme" class="form-label">Theme : </label>
-            <input value="{{$theme->theme}}" type="text" name="theme" class="form-control" id="theme" aria-describedby="emailHelp">
-    </div>
-    <div class="mb-3">
-        <label for="niveau"  class="form-label">Niveau</label>
-      <input value="{{$theme->niveau}}" type="text" name="niveau" class="form-control" id="niveau">
-    </div>
 
-    <button type="submit" class="btn btn-primary">Modifier</button>
-  </form>
-</div>
-  @endsection
+    <div class="col-md-6 mx-auto shadow p-3 ">
+        @if ($errors->any())
+            <div class="alert alert-danger">
+                <ul>
+                    @foreach ($errors->all() as $error)
+                        <li>{{ $error }}</li>
+                    @endforeach
+                </ul>
+            </div>
+        @endif
+        <h2>Edition du document {{$document->titre}} du theme {{$document->theme->theme}}</h2>
+        <form method="post" action="{{ route('documents.store') }}" enctype="multipart/form-data">
+            @csrf
+            <div class="mb-3">
+                <label for="titre" class="form-label">Titre : </label>
+                <input value="{{ $document->titre }}" type="text" name="titre"
+                    class="form-control  @error('titre')
+            is-invalid   @enderror" id="titre"
+                    aria-describedby="emailHelp">
+            </div>
+            <div class="mb-3">
+                <label for="chemin" class="form-label">Description : </label>
+
+            </div>
+            <div class="mb-3">
+                <label for="description" class="form-label">Description</label>
+                <textarea  name="description"
+                    class="form-control @error('discription')
+is-invalid
+      @enderror" id="description">{{ $document->description }}
+      </textarea>
+                @error('desccription')
+                    <div class="alert alert-danger">{{ $message }}</div>
+                @enderror
+            </div>
+            <div class="mb-3">
+                Theme : <select name="theme_id" id="theme_id" class="form-select">
+                   @foreach ($themes as $t)
+                   <option {{($t->id==$document->theme->id)? "selected":""}}  value="{{$t->id}}">{{$t->theme}}</option>
+                   @endforeach
+                </select>
+            </div>
+            <button type="submit" class="btn btn-primary">Valider</button>
+        </form>
+    </div>
+@endsection
