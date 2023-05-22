@@ -15,9 +15,10 @@
                 </ul>
             </div>
         @endif
-        <h2>Edition du document {{$document->titre}} du theme {{$document->theme->theme}}</h2>
-        <form method="post" action="{{ route('documents.store') }}" enctype="multipart/form-data">
+        <h2>Edition du document {{ $document->titre }} du theme {{ $document->theme->theme }}</h2>
+        <form method="post" action="{{ route('documents.update',$document->id) }}" enctype="multipart/form-data">
             @csrf
+            @method('PUT')
             <div class="mb-3">
                 <label for="titre" class="form-label">Titre : </label>
                 <input value="{{ $document->titre }}" type="text" name="titre"
@@ -26,13 +27,12 @@
                     aria-describedby="emailHelp">
             </div>
             <div class="mb-3">
-                <label for="chemin" class="form-label">Description : </label>
-
+                <label for="chemin" class="form-label">Document : </label>
+                <input type="file" name="chemin" id="chemin">
             </div>
             <div class="mb-3">
                 <label for="description" class="form-label">Description</label>
-                <textarea  name="description"
-                    class="form-control @error('discription')
+                <textarea name="description" class="form-control @error('discription')
 is-invalid
       @enderror" id="description">{{ $document->description }}
       </textarea>
@@ -42,9 +42,10 @@ is-invalid
             </div>
             <div class="mb-3">
                 Theme : <select name="theme_id" id="theme_id" class="form-select">
-                   @foreach ($themes as $t)
-                   <option {{($t->id==$document->theme->id)? "selected":""}}  value="{{$t->id}}">{{$t->theme}}</option>
-                   @endforeach
+                    @foreach ($themes as $t)
+                        <option {{ $t->id == $document->theme->id ? 'selected' : '' }} value="{{ $t->id }}">
+                            {{ $t->theme }}</option>
+                    @endforeach
                 </select>
             </div>
             <button type="submit" class="btn btn-primary">Valider</button>

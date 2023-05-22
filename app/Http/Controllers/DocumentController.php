@@ -11,7 +11,8 @@ class DocumentController extends Controller
     //recuperer les documents dans la bd et les passer a la page documents/index pour qu'elle les affiche
     public function index()
     {
-        $documents = Document::all();
+        $documents = Document::paginate(2);
+        // dd($documents);
         $titre = "Liste des documents";
         return view('documents/index', compact('documents', 'titre'));
     }
@@ -74,8 +75,20 @@ class DocumentController extends Controller
     //web : route post :documents/upd/id
     public function update(Request $request, $id)
     {
+
+        $request->validate([
+            'titre' => 'required|max:60',
+            'description' => 'required|min:5|max:200',
+            'chemin'=>'mimes:pdf,doc,xls|max:20480'        ]);
+
         $document = Document::find($id);
-        $document->update($request->all());
+        $data=$request->all();
+        if ($request->has('chemin')) {
+           $data['chemin']= $request->chemin->store('cours');
+           unlink(public_path("storage/".$document->chemin));
+        }
+
+        $document->update($data);
         return redirect()->route('documents.index');
     }
 }

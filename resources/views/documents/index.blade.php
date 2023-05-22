@@ -41,6 +41,9 @@
 
         </tbody>
     </table>
+    <div class="d-flex">
+        {{ $documents->links() }}
+    </div>
     @foreach ($documents as $t)
     @endforeach
 @endsection
