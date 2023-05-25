@@ -31,13 +31,24 @@
              </ul>
           </li>
           {{-- <li class="nav-item">
-            <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
+            <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Deconnexion</a>
           </li> --}}
         </ul>
-        <form class="d-flex">
-          <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-          <button class="btn btn-outline-success" type="submit">Search</button>
-        </form>
+   @auth
+
+
+   <form class="d-flex align-items-center" method="post" action="{{route('logout')}}">
+    Bienvenue  {{Auth::user()->name}}
+    @csrf
+    <button class="btn btn-outline-success" type="submit">Deconnexion</button>
+</form>
+
+
+@endauth
+@guest
+    Vous n'etes pas connecte <br>
+    <a class="btn btn-sm btn-success" href="{{route('login')}}">Connexion</a>
+@endguest
       </div>
     </div>
   </nav>
