@@ -47,3 +47,9 @@ Route::middleware(['auth'])->group(function () {
 });
 
 Route::get('themes/', [ThemeController::class,'index'])->name('youssef');
+Route::get('/testjs', function () {
+    return view('javascripts/async');
+});
+Route::get('/all', function () {
+    return view('javascripts/all');
+});

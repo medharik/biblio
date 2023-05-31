@@ -18,6 +18,14 @@
 
                 <x-input id="name" class="" type="text" name="name" :value="old('name')" required autofocus />
             </div>
+            <div>
+              <label for="">Role :</label>
+              <select type="text" name="is_admin" class="form-control">
+                <option value="">....</option>
+                <option value="admin">Admin</option>
+        <option value="invite">Invite</option>
+                </select>
+            </div>
 
             <!-- Email Address -->
             <div class="mt-4">

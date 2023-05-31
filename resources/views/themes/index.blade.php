@@ -30,15 +30,21 @@
                     <td>{{$t->niveau}}</td>
                     <td>
                         <a href="{{ url('themes/'.$t->id ) }}" class="btn btn-sm btn-info">Consulter</a>
-                      @auth
 
-                      <form action="{{url('themes/'.$t->id)}}" method="post" class="d-inline">
-                          @csrf
-                          @method('DELETE')
-                          <button onclick="return confirm('Supprimer?')" class="btn btn-sm btn-danger">Supprimer</button>
-                      </form>
-                      <a href="{{ route('themes.edit',[$t->id]) }}" class="btn btn-sm btn-warning">Editer</a>
-                      @endauth
+@auth
+    @if (Auth::user()->is_admin=="admin")
+
+    <form action="{{url('themes/'.$t->id)}}" method="post" class="d-inline">
+        @csrf
+        @method('DELETE')
+        <button onclick="return confirm('Supprimer?')" class="btn btn-sm btn-danger">Supprimer</button>
+    </form>
+
+    <a href="{{ route('themes.edit',[$t->id]) }}" class="btn btn-sm btn-warning">Editer</a>
+    @endauth
+
+
+@endauth
 
 
 
